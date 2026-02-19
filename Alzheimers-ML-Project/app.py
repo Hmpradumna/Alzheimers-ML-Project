@@ -19,8 +19,9 @@ if not os.path.exists("models/best_model.pkl"):
     st.error("❌ Model not found. Please run train.py first.")
     st.stop()
 
-model = joblib.load("models/best_model.pkl")
-scaler = joblib.load("models/scaler.pkl")
+model = joblib.load("Alzheimers-ML-Project/models/best_model.pkl")
+scaler = joblib.load("Alzheimers-ML-Project/models/scaler.pkl")
+
 
 # -----------------------------
 # Header
@@ -126,3 +127,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
