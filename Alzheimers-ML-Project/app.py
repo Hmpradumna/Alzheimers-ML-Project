@@ -3,21 +3,17 @@ import numpy as np
 import joblib
 import os
 
-# -----------------------------
-# Page Config
-# -----------------------------
-st.set_page_config(
-    page_title="Alzheimer’s Risk Predictor",
-    page_icon="🧠",
-    layout="wide"
-)
+MODEL_PATH = "Alzheimers-ML-Project/models/best_model.pkl"
+SCALER_PATH = "Alzheimers-ML-Project/models/scaler.pkl"
 
-# -----------------------------
-# Load Model + Scaler
-# -----------------------------
-if not os.path.exists("models/best_model.pkl"):
-    st.error("❌ Model not found. Please run train.py first.")
+try:
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)
+except Exception as e:
+    st.error("❌ Model files could not be loaded.")
+    st.write(e)
     st.stop()
+
 
 model = joblib.load("Alzheimers-ML-Project/models/best_model.pkl")
 scaler = joblib.load("Alzheimers-ML-Project/models/scaler.pkl")
@@ -127,4 +123,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
